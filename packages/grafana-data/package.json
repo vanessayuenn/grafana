@@ -40,7 +40,7 @@
     "@types/d3-interpolate": "^3.0.0",
     "d3-interpolate": "3.0.1",
     "date-fns": "2.29.3",
-    "dompurify": "^2.4.3",
+    "dompurify": "^2",
     "eventemitter3": "4.0.7",
     "fast_array_intersect": "1.1.0",
     "history": "4.10.1",
@@ -55,7 +55,8 @@
     "rxjs": "7.5.7",
     "tinycolor2": "1.4.2",
     "tslib": "2.4.1",
-    "uplot": "1.6.24"
+    "uplot": "1.6.24",
+    "xss": "^1.0.14"
   },
   "devDependencies": {
     "@grafana/tsconfig": "^1.2.0-rc1",
