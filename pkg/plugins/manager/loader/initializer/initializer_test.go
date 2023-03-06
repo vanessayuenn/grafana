@@ -147,6 +147,7 @@ func TestInitializer_envVars(t *testing.T) {
 			LicenseEdition: "test",
 			TokenRaw:       "token",
 			LicensePath:    "/path/to/ent/license",
+			LicenseAppUrl:  "https://myorg.com/",
 		}
 
 		i := &Initializer{
@@ -165,12 +166,13 @@ func TestInitializer_envVars(t *testing.T) {
 		}
 
 		envVars := i.envVars(p)
-		assert.Len(t, envVars, 5)
+		assert.Len(t, envVars, 6)
 		assert.Equal(t, "GF_PLUGIN_CUSTOM_ENV_VAR=customVal", envVars[0])
 		assert.Equal(t, "GF_VERSION=", envVars[1])
 		assert.Equal(t, "GF_EDITION=test", envVars[2])
 		assert.Equal(t, "GF_ENTERPRISE_LICENSE_PATH=/path/to/ent/license", envVars[3])
-		assert.Equal(t, "GF_ENTERPRISE_LICENSE_TEXT=token", envVars[4])
+		assert.Equal(t, "GF_ENTERPRISE_APP_URL=https://myorg.com/", envVars[4])
+		assert.Equal(t, "GF_ENTERPRISE_LICENSE_TEXT=token", envVars[5])
 	})
 }
 
