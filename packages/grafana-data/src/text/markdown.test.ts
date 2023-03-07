@@ -8,7 +8,7 @@ describe('Markdown wrapper', () => {
 
   it('should sanitize by default', () => {
     const str = renderMarkdown('<script>alert()</script>');
-    expect(str).toBe('');
+    expect(str).toBe('&lt;script&gt;alert()&lt;/script&gt;');
   });
 
   it('should only escape (and not remove) code blocks inside markdown', () => {

@@ -30,6 +30,11 @@ const sanitizeTextPanelWhitelist = new xss.FilterXSS({
   },
 });
 
+/**
+ * Return a sanitized string that is going to be rendered in the browser to prevent XSS attacks.
+ * Note that sanitized tags will be removed, such as "<script>".
+ * We don't allow form, pre, or input elements.
+ */
 export function sanitize(unsanitizedString: string): string {
   try {
     return DOMPurify.sanitize(unsanitizedString, {
@@ -42,6 +47,13 @@ export function sanitize(unsanitizedString: string): string {
   }
 }
 
+/**
+ * Returns string safe from XSS attacks to be used in the Text panel plugin.
+ *
+ * Even though we allow the style-attribute, there's still default filtering applied to it
+ * Info: https://github.com/leizongmin/js-xss#customize-css-filter
+ * Whitelist: https://github.com/leizongmin/js-css-filter/blob/master/lib/default.js
+ */
 export function sanitizeTextPanelContent(unsanitizedString: string): string {
   try {
     return sanitizeTextPanelWhitelist.process(unsanitizedString);
@@ -51,18 +63,22 @@ export function sanitizeTextPanelContent(unsanitizedString: string): string {
   }
 }
 
+// Returns sanitized SVG, free from XSS attacks to be used when rendering SVG content.
 export function sanitizeSVGContent(unsanitizedString: string): string {
   return DOMPurify.sanitize(unsanitizedString, { USE_PROFILES: { svg: true, svgFilters: true } });
 }
 
+// Return a sanitized URL, free from XSS attacks, such as javascript:alert(1)
 export function sanitizeUrl(url: string): string {
   return braintreeSanitizeUrl(url);
 }
 
+// Returns true if the string contains ANSI color codes.
 export function hasAnsiCodes(input: string): boolean {
   return /\u001b\[\d{1,2}m/.test(input);
 }
 
+// Returns a string with HTML entities escaped.
 export function escapeHtml(str: string): string {
   return String(str)
     .replace(/&/g, '&amp;')
