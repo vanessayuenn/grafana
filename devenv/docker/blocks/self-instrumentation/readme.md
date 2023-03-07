@@ -76,3 +76,8 @@ func (hs *HTTPServer) GetSignedInUser(c *contextmodel.ReqContext) response.Respo
 	return hs.getUserUserProfile(c, c.UserID)
 }
 ```
+
+
+You can now visit your [profile](http://localhost:3000/profile) page a few times and run a query on the Prometheus datasource to see your custom metric:
+
+http://localhost:3000/explore?orgId=1&left=%7B%22datasource%22:%22e34584fb-98e4-4d5c-83ae-3c0000dea48a%22,%22queries%22:%5B%7B%22refId%22:%22A%22,%22expr%22:%22grafana_my_custom_api_user_total%7B%7D%22,%22range%22:true,%22datasource%22:%7B%22type%22:%22prometheus%22,%22uid%22:%22e34584fb-98e4-4d5c-83ae-3c0000dea48a%22%7D,%22editorMode%22:%22code%22%7D%5D,%22range%22:%7B%22from%22:%22now-5m%22,%22to%22:%22now%22%7D%7D
