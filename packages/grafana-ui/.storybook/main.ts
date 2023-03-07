@@ -1,11 +1,9 @@
 import path from 'path';
-import type { StorybookConfig } from '@storybook/react/types';
+import type { StorybookConfig } from '@storybook/react-webpack5';
 // avoid importing from @grafana/data to prevent node error: ERR_REQUIRE_ESM
 import { availableIconsIndex, IconName } from '../../grafana-data/src/types/icon';
 import { getIconSubDir } from '../src/components/Icon/utils';
-
 const stories = ['../src/**/*.story.@(tsx|mdx)'];
-
 if (process.env.NODE_ENV !== 'production') {
   stories.push('../src/**/*.story.internal.@(tsx|mdx)');
 }
@@ -21,12 +19,10 @@ const iconPaths = Object.keys(availableIconsIndex)
       to: `/public/img/icons/${subDir}/${iconName}.svg`,
     };
   });
-
 const mainConfig: StorybookConfig = {
   stories,
   addons: [
     {
-      // work around docs 6.5.x not resolving correctly with yarn PnP
       name: path.dirname(require.resolve('@storybook/addon-docs/package.json')),
       options: {
         configureJSX: true,
@@ -34,19 +30,17 @@ const mainConfig: StorybookConfig = {
       },
     },
     {
-      name: '@storybook/addon-essentials',
+      name: path.dirname(require.resolve('@storybook/addon-essentials/package.json')),
       options: {
         backgrounds: false,
-        // work around docs 6.5.x not resolving correctly with yarn PnP
         docs: false,
       },
     },
-    '@storybook/addon-a11y',
+    path.dirname(require.resolve('@storybook/addon-a11y/package.json')),
     {
-      name: '@storybook/preset-scss',
+      name: path.dirname(require.resolve('@storybook/preset-scss/package.json')),
       options: {
         styleLoaderOptions: {
-          // this is required for theme switching .use() and .unuse()
           injectType: 'lazyStyleTag',
         },
         cssLoaderOptions: {
@@ -55,38 +49,54 @@ const mainConfig: StorybookConfig = {
         },
       },
     },
-    '@storybook/addon-storysource',
-    'storybook-dark-mode',
+    path.dirname(require.resolve('@storybook/addon-storysource/package.json')),
+    path.dirname(require.resolve('storybook-dark-mode/package.json')),
     {
-      // replace babel-loader in manager and preview with esbuild-loader
-      name: 'storybook-addon-turbo-build',
+      name: path.dirname(require.resolve('storybook-addon-turbo-build/package.json')),
       options: {
         optimizationLevel: 3,
       },
     },
+    path.dirname(require.resolve('@storybook/addon-mdx-gfm/package.json')),
   ],
-  core: {
-    builder: {
-      name: 'webpack5',
-      options: {
+  // core: {},
+  features: {
+    previewMdx2: true,
+  },
+  framework: {
+    name: path.dirname(require.resolve('@storybook/react-webpack5/package.json')),
+    options: {
+      fastRefresh: true,
+      builder: {
         fsCache: true,
       },
     },
   },
-  features: {
-    previewMdx2: true,
-  },
-  framework: '@storybook/react',
   logLevel: 'debug',
-  reactOptions: {
-    fastRefresh: true,
-  },
+  // reactOptions: {
+  //   fastRefresh: true
+  // },
   staticDirs: [
-    { from: '../../../public/fonts', to: '/public/fonts' },
-    { from: '../../../public/img/grafana_text_logo-dark.svg', to: '/public/img/grafana_text_logo-dark.svg' },
-    { from: '../../../public/img/grafana_text_logo-light.svg', to: '/public/img/grafana_text_logo-light.svg' },
-    { from: '../../../public/img/fav32.png', to: '/public/img/fav32.png' },
-    { from: '../../../public/lib', to: '/public/lib' },
+    {
+      from: '../../../public/fonts',
+      to: '/public/fonts',
+    },
+    {
+      from: '../../../public/img/grafana_text_logo-dark.svg',
+      to: '/public/img/grafana_text_logo-dark.svg',
+    },
+    {
+      from: '../../../public/img/grafana_text_logo-light.svg',
+      to: '/public/img/grafana_text_logo-light.svg',
+    },
+    {
+      from: '../../../public/img/fav32.png',
+      to: '/public/img/fav32.png',
+    },
+    {
+      from: '../../../public/lib',
+      to: '/public/lib',
+    },
     ...iconPaths,
   ],
   typescript: {
@@ -115,9 +125,19 @@ const mainConfig: StorybookConfig = {
       test: /(unicons|mono|custom)[\\/].*\.svg$/,
       type: 'asset/source',
     });
-
     return config;
   },
+  docs: {
+    autodocs: true,
+  },
+  storyIndexers: async (items: any[]) => {
+    // test: /(stories|story)\.[tj]sx?$/,
+    for (const item of items) {
+      if (item.test && item.test.test('.story.tsx')) {
+        item.test = /(stories|story)(\.internal)?\.[tj]sx?$/;
+      }
+    }
+    return items;
+  },
 };
-
 module.exports = mainConfig;
