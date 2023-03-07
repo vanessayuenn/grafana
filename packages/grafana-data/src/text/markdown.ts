@@ -1,6 +1,6 @@
 import { marked } from 'marked';
 
-import { sanitize, sanitizeTextPanelContent } from './sanitize';
+import { sanitizeTextPanelContent } from './sanitize';
 
 let hasInitialized = false;
 
