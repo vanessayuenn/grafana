@@ -1,4 +1,4 @@
-import { Meta, StoryFn } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react-webpack5';
 
 import { Props, Spinner } from './Spinner';
 import mdx from './Spinner.mdx';

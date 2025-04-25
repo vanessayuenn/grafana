@@ -1,4 +1,4 @@
-import { Meta, StoryFn } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react-webpack5';
 
 import { EmotionPerfTest } from './EmotionPerfTest';
 import { ThemeDemo as NewThemeDemoComponent } from './ThemeDemo';

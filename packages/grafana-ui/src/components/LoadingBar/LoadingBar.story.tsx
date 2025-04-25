@@ -1,5 +1,5 @@
 import { css } from '@emotion/css';
-import { Meta, StoryFn } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react-webpack5';
 
 import { GrafanaTheme2 } from '@grafana/data';
 

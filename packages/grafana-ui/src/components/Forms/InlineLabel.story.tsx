@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/react';
+import { Meta } from '@storybook/react-webpack5';
 
 import { InlineLabel, Props } from './InlineLabel';
 import mdx from './InlineLabel.mdx';

@@ -1,4 +1,4 @@
-import { Meta, StoryFn, StoryObj } from '@storybook/react';
+import { Meta, StoryFn, StoryObj } from '@storybook/react-webpack5';
 import { useCallback, useMemo, useState } from 'react';
 import { CellProps } from 'react-table';
 

@@ -1,5 +1,5 @@
 import { css } from '@emotion/css';
-import { Meta } from '@storybook/react';
+import { Meta } from '@storybook/react-webpack5';
 import { ChangeEvent, useState } from 'react';
 
 import { toIconName, IconName } from '@grafana/data';

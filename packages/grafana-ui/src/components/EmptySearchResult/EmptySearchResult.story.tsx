@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/react';
+import { Meta } from '@storybook/react-webpack5';
 
 import { EmptySearchResult } from './EmptySearchResult';
 import mdx from './EmptySearchResult.mdx';

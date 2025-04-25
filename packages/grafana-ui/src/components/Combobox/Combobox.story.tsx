@@ -1,6 +1,6 @@
 import { action } from '@storybook/addon-actions';
-import { useArgs } from '@storybook/preview-api';
-import { Meta, StoryFn, StoryObj } from '@storybook/react';
+import { useArgs } from 'storybook/preview-api';
+import { Meta, StoryFn, StoryObj } from '@storybook/react-webpack5';
 import { useEffect, useState } from 'react';
 
 import { Field } from '../Forms/Field';

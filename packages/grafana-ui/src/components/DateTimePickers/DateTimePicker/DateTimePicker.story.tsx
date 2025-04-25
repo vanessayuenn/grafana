@@ -1,5 +1,5 @@
 import { action } from '@storybook/addon-actions';
-import { StoryFn, Meta } from '@storybook/react';
+import { StoryFn, Meta } from '@storybook/react-webpack5';
 import { useState } from 'react';
 
 import { dateTime, DateTime } from '@grafana/data';

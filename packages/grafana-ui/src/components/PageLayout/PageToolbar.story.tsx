@@ -1,5 +1,5 @@
 import { action } from '@storybook/addon-actions';
-import { Meta } from '@storybook/react';
+import { Meta } from '@storybook/react-webpack5';
 
 import { StoryExample } from '../../utils/storybook/StoryExample';
 import { IconButton } from '../IconButton/IconButton';

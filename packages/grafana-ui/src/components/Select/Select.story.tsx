@@ -1,6 +1,6 @@
 import { auto } from '@popperjs/core';
 import { action } from '@storybook/addon-actions';
-import { Meta, StoryFn } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react-webpack5';
 import Chance from 'chance';
 import { useState } from 'react';
 

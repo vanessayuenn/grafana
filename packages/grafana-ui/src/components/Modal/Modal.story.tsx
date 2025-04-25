@@ -1,5 +1,5 @@
 import { css, cx } from '@emotion/css';
-import { StoryFn, Meta } from '@storybook/react';
+import { StoryFn, Meta } from '@storybook/react-webpack5';
 import { oneLineTrim } from 'common-tags';
 import { useState } from 'react';
 

@@ -1,5 +1,5 @@
 import { action } from '@storybook/addon-actions';
-import { Meta, StoryFn } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react-webpack5';
 import { useState } from 'react';
 import * as React from 'react';
 import { AsyncState } from 'react-use/lib/useAsync';

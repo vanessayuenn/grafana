@@ -1,4 +1,4 @@
-import { Decorator } from '@storybook/react';
+import { Decorator } from '@storybook/react-webpack5';
 import { useEffect } from 'react';
 
 import { setTimeZoneResolver } from '@grafana/data';

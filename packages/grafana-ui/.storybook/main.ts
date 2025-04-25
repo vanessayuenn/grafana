@@ -15,36 +15,30 @@ copyAssetsSync();
 
 const mainConfig: StorybookConfig = {
   stories,
-  addons: [
-    {
-      name: '@storybook/addon-essentials',
-      options: {
-        backgrounds: false,
-      },
+  addons: [{
+    name: '@storybook/addon-essentials',
+    options: {
+      backgrounds: false,
     },
-    getAbsolutePath('@storybook/addon-a11y'),
-    {
-      name: '@storybook/preset-scss',
-      options: {
-        styleLoaderOptions: {
-          // this is required for theme switching .use() and .unuse()
-          injectType: 'lazyStyleTag',
-        },
-        cssLoaderOptions: {
-          url: false,
-          importLoaders: 2,
-        },
-        sassLoaderOptions: {
-          sassOptions: {
-            // silencing these warnings since we're planning to remove sass when angular is gone
-            silenceDeprecations: ['import', 'global-builtin'],
-          },
+  }, getAbsolutePath('@storybook/addon-a11y'), {
+    name: '@storybook/preset-scss',
+    options: {
+      styleLoaderOptions: {
+        // this is required for theme switching .use() and .unuse()
+        injectType: 'lazyStyleTag',
+      },
+      cssLoaderOptions: {
+        url: false,
+        importLoaders: 2,
+      },
+      sassLoaderOptions: {
+        sassOptions: {
+          // silencing these warnings since we're planning to remove sass when angular is gone
+          silenceDeprecations: ['import', 'global-builtin'],
         },
       },
     },
-    getAbsolutePath('@storybook/addon-storysource'),
-    getAbsolutePath('@storybook/addon-webpack5-compiler-swc'),
-  ],
+  }, getAbsolutePath('@storybook/addon-webpack5-compiler-swc')],
   framework: {
     name: getAbsolutePath('@storybook/react-webpack5'),
     options: {

@@ -1,4 +1,4 @@
-import { StoryFn } from '@storybook/react';
+import { StoryFn } from '@storybook/react-webpack5';
 import { ValidateResult } from 'react-hook-form';
 
 import { withStoryContainer } from '../../utils/storybook/withStoryContainer';

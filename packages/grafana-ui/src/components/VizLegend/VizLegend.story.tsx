@@ -1,4 +1,4 @@
-import { StoryFn, Meta } from '@storybook/react';
+import { StoryFn, Meta } from '@storybook/react-webpack5';
 import { FC, useEffect, useState } from 'react';
 
 import { DisplayValue, GrafanaTheme2 } from '@grafana/data';

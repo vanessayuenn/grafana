@@ -1,5 +1,5 @@
 import { css } from '@emotion/css';
-import { Unstyled } from '@storybook/blocks';
+import { Unstyled } from '@storybook/addon-docs/blocks';
 import { ReactNode } from 'react';
 
 import { GrafanaTheme2 } from '@grafana/data';

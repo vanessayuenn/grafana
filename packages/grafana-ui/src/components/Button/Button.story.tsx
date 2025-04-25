@@ -1,5 +1,5 @@
 import { action } from '@storybook/addon-actions';
-import { StoryFn } from '@storybook/react';
+import { StoryFn } from '@storybook/react-webpack5';
 
 import { ComponentSize } from '../../types';
 import { Card } from '../Card/Card';

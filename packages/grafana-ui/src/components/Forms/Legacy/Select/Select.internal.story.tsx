@@ -1,6 +1,6 @@
 import { action } from '@storybook/addon-actions';
-import { useArgs } from '@storybook/preview-api';
-import { Meta, StoryFn } from '@storybook/react';
+import { useArgs } from 'storybook/preview-api';
+import { Meta, StoryFn } from '@storybook/react-webpack5';
 import { useCallback } from 'react';
 
 import { SelectableValue } from '@grafana/data';

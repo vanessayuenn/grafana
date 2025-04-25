@@ -1,5 +1,5 @@
 import { css, cx } from '@emotion/css';
-import { Args, Decorator } from '@storybook/react';
+import { Args, Decorator } from '@storybook/react-webpack5';
 import * as React from 'react';
 
 interface Props {

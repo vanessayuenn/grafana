@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/react';
+import { Meta } from '@storybook/react-webpack5';
 
 import { GraphContextMenuHeader } from '..';
 import { StoryExample } from '../../utils/storybook/StoryExample';

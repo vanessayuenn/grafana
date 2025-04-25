@@ -1,3 +1,6 @@
+// For more info, see https://github.com/storybookjs/eslint-plugin-storybook#configuration-flat-config-format
+import storybook from "eslint-plugin-storybook";
+
 // @ts-check
 const emotionPlugin = require('@emotion/eslint-plugin');
 const importPlugin = require('eslint-plugin-import');
